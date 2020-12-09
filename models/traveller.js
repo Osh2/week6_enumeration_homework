@@ -26,13 +26,16 @@ Traveller.prototype.getJourneysByTransport = function (transport) {
 
 Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
   const results = this.journeys.filter((journey)=>{
-    return journey.distance >= minDistance
+    return journey.distance >= minDistance;
   });
-  return results
+  return results;
 };
 
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
-
+  const results = this.journeys.reduce((distanceCounter, journey)=>{
+    return distanceCounter + journey.distance;
+  },0);
+  return results;
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
